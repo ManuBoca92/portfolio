@@ -3,7 +3,7 @@
     <v-layout row wrap>
       <v-flex>
         <v-list>
-          <template v-for="(item, index) in educationList">
+          <template v-for="item in educationList">
             <v-subheader
               v-if="item.header"
               id="item.header"
@@ -11,15 +11,9 @@
               v-html="item.header"
             ></v-subheader>
 
-            <v-divider
-              v-else-if="item.divider"
-              :key="index"
-              :inset="item.inset"
-            ></v-divider>
-
             <v-list-item v-else :key="item.title" two-line>
               <v-layout row wrap justify-space-around>
-                <SchoolPhoto :avatar="item.avatar" />
+                <SchoolPhoto :avatar="item.avatar" :url="item.url" />
                 <Degree :degreeType="item.title" />
               </v-layout>
             </v-list-item>
