@@ -1,87 +1,67 @@
 <template>
-  <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
+  <v-app light>
+    <v-toolbar flat color="white" app>
+      <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
+      <a href="/">
+        <v-toolbar-title class="text-uppercase black--text text--darken-3">
+          <span class="font-weight-bold">Ebonom N. Mfam</span>
+        </v-toolbar-title>
+      </a>
+
+      <v-btn
+        flat
+        left
+        text
+        icon
+        large
+        color="blue"
+        href="https://www.linkedin.com/in/ebonom-n-mfam-870136101/"
+      >
+        <v-icon>mdi-linkedin-box</v-icon>
+      </v-btn>
+
+      <v-btn
+        flat
+        left
+        text
+        icon
+        large
+        color="black"
+        href="https://github.com/ManuBoca92"
+      >
+        <v-icon>mdi-github-circle</v-icon>
+      </v-btn>
+
+      <v-spacer />
+    </v-toolbar>
+
+    <v-navigation-drawer v-model="drawer" app class="indigo">
       <v-list>
         <v-list-tile
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
+          v-for="link in links"
+          :key="link.text"
+          nuxt
+          :to="link.route"
         >
           <v-list-tile-action>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon class="white--text">{{ link.icon }}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title v-text="item.title" />
+            <v-list-tile-title class="white--text">{{
+              link.text
+            }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar
-      :clipped-left="clipped"
-      fixed
-      app
-    >
-      <v-toolbar-side-icon @click="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>{{ `chevron_${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>web</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>remove</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
-      <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>menu</v-icon>
-      </v-btn>
-    </v-toolbar>
+
     <v-content>
       <v-container>
         <nuxt />
       </v-container>
     </v-content>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-tile @click.native="right = !right">
-          <v-list-tile-action>
-            <v-icon light>compare_arrows</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer
-      :fixed="fixed"
-      app
-    >
-      <span>&copy; 2019</span>
+    <v-footer :fixed="fixed" app>
+      <span>&copy;Ebonom N. Mfam 2019</span>
     </v-footer>
   </v-app>
 </template>
@@ -90,26 +70,34 @@
 export default {
   data() {
     return {
-      clipped: false,
-      drawer: false,
       fixed: false,
-      items: [
+      drawer: false,
+      links: [
+        { icon: 'mdi-school', text: 'Education', route: '/#education' },
         {
-          icon: 'apps',
-          title: 'Welcome',
-          to: '/'
+          icon: 'mdi-briefcase-outline',
+          text: 'Experience',
+          route: '/#experience'
         },
         {
-          icon: 'bubble_chart',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+          icon: 'mdi-certificate',
+          text: 'Certification',
+          route: '/#certification'
+        },
+        {
+          icon: 'mdi-thumb-up-outline',
+          text: 'Interests',
+          route: '/#interests'
+        },
+        { icon: 'mdi-contact-mail', text: 'Contact', route: '/#contact' }
+      ]
     }
   }
 }
 </script>
+
+<style scoped>
+a {
+  text-decoration: none;
+}
+</style>
