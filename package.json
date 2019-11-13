@@ -18,6 +18,7 @@
     "vuetify-loader": "^1.2.1"
   },
   "devDependencies": {
+    "@mdi/font": "^4.5.95",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
     "nodemon": "^1.18.9",
