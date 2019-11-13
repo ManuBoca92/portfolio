@@ -11,6 +11,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@types/google.fonts": "^1.0.2",
     "cross-env": "^5.2.0",
     "firebase": "^7.3.0",
     "nuxt": "^2.4.0",
