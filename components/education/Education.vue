@@ -19,20 +19,8 @@
 
             <v-list-item v-else :key="item.title" two-line>
               <v-layout row wrap justify-space-around>
-                <v-flex xs3 sm3 md3 lg3 xl3>
-                  <v-list-item-avatar>
-                    <v-img :src="item.avatar"></v-img>
-                  </v-list-item-avatar>
-                </v-flex>
-
-                <v-flex xs10 sm8 md8 lg8 xl8 class="my-auto">
-                  <v-list-item-content>
-                    <v-list-item-title v-html="item.title"></v-list-item-title>
-                    <v-list-item-subtitle
-                      v-html="item.subtitle"
-                    ></v-list-item-subtitle>
-                  </v-list-item-content>
-                </v-flex>
+                <SchoolPhoto :avatar="item.avatar" />
+                <Degree :degreeType="item.title" />
               </v-layout>
             </v-list-item>
           </template>
@@ -43,7 +31,10 @@
 </template>
 
 <script>
+import SchoolPhoto from './SchoolPhoto.vue'
+import Degree from './Degree.vue'
 export default {
+  components: { SchoolPhoto, Degree },
   props: ['educationList']
 }
 </script>
